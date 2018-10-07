@@ -15,16 +15,17 @@
         slave.vm.network "private_network", ip: "10.0.0.201"
   end
 7) Vagrant up
-8) ssh-keygen -t rsa
-9) ssh-copy-id vagrant@10.0.0.201
-10) ssh 10.0.0.201
-11) sudo apt-get update
-12) sudo apt-get install software-properties-common
-13) sudo apt-add-repository --yes --update ppa:ansible/ansible
-14) sudo add-apt-repository ppa:ansible/ansible
-15) sudo apt-get update
-16) sudo apt-get install ansible
-17) ansible --version
-18) ansible-playbook --version
-19) ansible-galaxy --version
-20) history
+8) vagrant ssh master
+9) ssh-keygen -t rsa
+10) ssh-copy-id vagrant@10.0.0.201
+11) ssh 10.0.0.201
+12) sudo apt-get update
+13) sudo apt-get install software-properties-common
+14) sudo apt-add-repository --yes --update ppa:ansible/ansible
+15) sudo add-apt-repository ppa:ansible/ansible
+16) sudo apt-get update
+17) sudo apt-get install ansible
+18) ansible --version
+19) ansible-playbook --version
+20) ansible-galaxy --version
+21) history
