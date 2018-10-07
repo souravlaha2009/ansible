@@ -1,0 +1,119 @@
+The topology we're using is a common three tier web application architecture.
+
+We have a load balancer tear along with the application tier and database here.
+
+In addition in addition to these three tiers we have a control machine that sits off to the side
+
+and the control machine really acts as the orchestration of the place that we're going to install and
+
+spool and do all of our mission management throughout this course.
+
+Ansible Installation
+----------------------
+Assumption:
+1) The first assumption is that you have access to a control machine recone install installations.
+2) The second assumption I'm making about the full environment is that all of the end servers are going
+to be running a ubuntu trustee and that is a very common Linux distribution.
+3) Third assumption is that all commands are going to be run from the control machine.
+4) Fourth assumption is that the control machine has ssh access already set up so all the other hosts.
+5) And the last assumption I'm making is that the user that you set up to use to have X ansible run as
+will have super user access on your posts.So this is not a strict requirement to actually run ansible and still can run without super user access.
+
+sudo easy_install pip
+sudo pip install ansible
+
+ansible --version
+ansible-playbook --version
+ansible-galaxy --version
+
+Lab 1 : Delete all the peconfigured target hosts
+
+ansible --list-hosts all
+sudo vi /etc/ansible/hosts
+delete all the hosts
+ansible --list-hosts all
+
+
+docker run --name lb01 -d -p 8080:80 nginx
+docker run --name app01 -d -p 9990:9990 jboss/wildfly-admin
+docker run --name app02 -d -p 8081:80 my-apache
+docker run --name db01 -d -e MYSQL_ROOT_PASSWORD=mysql mysql
+
+Password Less Access
+=====================
+1) Generate the SSH Keys
+ssh-keygen -t rsa
+
+2) Make a .ssh directory on the destination Machine
+ssh -i "MyLinuxKPHome.pem" ec2-user@ec2-13-126-82-177.ap-south-1.compute.amazonaws.com mkdir -p .ssh
+
+3) Copy the public key to the destination Machine
+cat .ssh/id_rsa.pub | ssh -i "MyLinuxKPHome.pem" ec2-user@ec2-13-126-82-177.ap-south-1.compute.amazonaws.com 'cat >> .ssh/authorized_keys'
+
+4) Change the permissions of the .ssh directory and authorized_keys
+ssh -i "MyLinuxKPHome.pem" ec2-user@ec2-13-126-82-177.ap-south-1.compute.amazonaws.com "chmod 700 .ssh; chmod 640 .ssh/authorized_keys"
+
+
+1) Generate the SSH Keys
+ssh-keygen -t rsa
+
+2) Make a .ssh directory on the destination Machine
+ssh -i "MyLinuxKPHome.pem" ec2-user@13.233.20.154 mkdir -p .ssh
+
+3) Copy the public key to the destination Machine
+cat .ssh/id_rsa.pub | ssh -i "MyLinuxKPHome.pem" ec2-user@13.233.20.154 'cat >> .ssh/authorized_keys'
+
+4) Change the permissions of the .ssh directory and authorized_keys
+ssh -i "MyLinuxKPHome.pem" ec2-user@13.233.20.154 "chmod 700 .ssh; chmod 640 .ssh/authorized_keys"
+
+Lab 2: Create our own inventory file
+
+Create a file dev-hosts
+vi dev-hosts
+[loadbalancer]
+lb01
+
+[webserver]
+app01
+app02
+
+[database]
+db01
+
+[control]
+control ansible_connection=local
+
+Test Command
+ansible - i dev-hosts --list-hosts all 
+
+https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
+https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html
+
+
+Lab 3: Create our own ansible configuration file
+vi ansible.cfg
+[defaults]
+inventory = ./dev-hosts
+
+Test Command
+ansible --list-hosts all
+
+
+Lab 4: Host Selection with Patterns
+https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html
+
+ansible --list-hosts "*"
+ansible --list-hosts loadbalancer
+ansible --list-hosts webserver
+ansible --list-hosts db01
+ansible --list-hosts ap*
+ansible --list-hosts database:control
+ansible --list-hosts webserver[0]
+ansible --list-hosts \!control
+
+Lab 5: Ping all the modules
+ansible -m ping all
+
+
+
+
