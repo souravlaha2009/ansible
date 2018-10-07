@@ -20,7 +20,6 @@
 10) ssh 10.0.0.201
 11) sudo apt-get update
 12) sudo apt-get install software-properties-common
-13) sudo apt-add-repository --yes --update ppa:ansible/ansible
 14) sudo add-apt-repository ppa:ansible/ansible
 15) sudo apt-get update
 16) sudo apt-get install ansible
