@@ -27,6 +27,8 @@
 18) ansible-playbook --version
 19) ansible-galaxy --version
 20) history
+<<<<<<< Updated upstream
+=======
 
 
 
@@ -121,3 +123,4 @@ apache2.yaml
           state: started
 
 
+>>>>>>> Stashed changes

@@ -1,0 +1,203 @@
+Lab 1
+======
+first.sh
+#!/bin/sh
+# This is a comment!
+echo Hello World        # This is a comment, too!
+
+chmod 755 first.sh
+./first.sh
+
+Lab 2
+======
+first2.sh
+==============
+#!/bin/sh
+# This is a comment!
+echo "Hello      World"       # This is a comment, too!
+echo "Hello World"
+echo "Hello * World"
+echo Hello * World
+echo Hello      World
+echo "Hello" World
+echo Hello "     " World
+echo "Hello "*" World"
+echo `hello` world
+echo 'hello' world
+
+
+Lab 3 : Declaring Variables
+===============================
+VAR=value
+
+var.sh
+#!/bin/sh
+MY_MESSAGE="Hello World"
+echo $MY_MESSAGE
+
+
+
+Lab 4 : Passing Values
+=======
+var2.sh
+
+#!/bin/sh
+echo What is your name?
+read MY_NAME
+echo "Hello $MY_NAME - hope you're well."
+
+
+Lab 5 : Scope of Variable
+======
+myvar2.sh
+
+#!/bin/sh
+echo "MYVAR is: $MYVAR"
+MYVAR="hi there"
+echo "MYVAR is: $MYVAR"
+
+
+$ MYVAR=hello
+$ ./myvar2.sh
+MYVAR is:
+MYVAR is: hi there
+
+$ export MYVAR
+$ ./myvar2.sh
+MYVAR is: hello
+MYVAR is: hi there
+
+$ echo $MYVAR
+hello
+
+Lab 6: Create a File 
+========================
+user.sh
+#!/bin/sh
+echo "What is your name?"
+read USER_NAME
+echo "Hello $USER_NAME"
+echo "I will create you a file called ${USER_NAME}_file"
+touch "${USER_NAME}_file"
+
+
+Lab 7: For Loop
+================
+for.sh
+#!/bin/sh
+for i in 1 2 3 4 5
+do
+  echo "Looping ... number $i"
+done
+
+
+Lab 8: Using Wild Cards with FOr Loop
+=======================================
+for2.sh
+#!/bin/sh
+for i in hello 1 * 2 goodbye 
+do
+  echo "Looping ... i is set to $i"
+done
+
+
+Lab 9: While Loops
+=====================
+while.sh
+#!/bin/sh
+INPUT_STRING=hello
+while [ "$INPUT_STRING" != "bye" ]
+do
+  echo "Please type something in (bye to quit)"
+  read INPUT_STRING
+  echo "You typed: $INPUT_STRING"
+done
+
+
+Lab 10: 
+==========
+while2.sh
+#!/bin/sh
+while :
+do
+  echo "Please type something in (^C to quit)"
+  read INPUT_STRING
+  echo "You typed: $INPUT_STRING"
+done
+
+Lab 11: Read from a file
+============================
+while3a.sh
+============
+#!/bin/sh
+while read f
+do
+  case $f in
+	hello)		echo English	;;
+	howdy)		echo American	;;
+	gday)		echo Australian	;;
+	bonjour)	echo French	;;
+	"guten tag")	echo German	;;
+	*)		echo Unknown Language: $f
+		;;
+   esac
+done < myfile
+
+
+Lab 12:
+========
+
+talk.sh
+#!/bin/sh
+
+echo "Please talk to me ..."
+while :
+do
+  read INPUT_STRING
+  case $INPUT_STRING in
+	hello)
+		echo "Hello yourself!"
+		;;
+	bye)
+		echo "See you again!"
+		break
+		;;
+	*)
+		echo "Sorry, I don't understand"
+		;;
+  esac
+done
+echo 
+echo "That's all folks!"
+
+
+Lab 13: Variables
+==================
+
+var3.sh
+#!/bin/sh
+echo "I was called with $# parameters"
+echo "My name is $0"
+echo "My first parameter is $1"
+echo "My second parameter is $2"
+echo "All parameters are $@"
+
+$ ./var3.sh
+
+./var3.sh hello world earth
+
+
+Lab 14: IFS: Internal Field Separator(Default is Space)
+===========================================================
+var5.sh
+#!/bin/sh
+old_IFS="$IFS"
+IFS=:
+echo "Please input some data separated by colons ..."
+read x y z
+IFS=$old_IFS
+echo "x is $x y is $y z is $z"
+
+
+Lab 15:
+========
