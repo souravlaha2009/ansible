@@ -336,7 +336,7 @@ esac
 
 Lab 10:
 =============
-Nesting of while loops sysntax
+Nesting of while loops syntax
 while command1 ; # this is loop1, the outer loop
 do
    Statement(s) to be executed if command1 is true

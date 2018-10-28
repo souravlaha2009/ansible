@@ -1,0 +1,151 @@
+==============================
+1 Condition under evaluation
+==============================
+1 coin = Toss the coin == Head or Tail
+
+if [ You get a Head in the toss ]
+then
+ echo "Go take a coffee when you encounter a head"
+fi
+
+if [ You get a Tail in the toss ]
+then
+ echo "Go take a tea when you encounter a head"
+fi
+
+if...fi statement
+====================================
+if [ condition ]
+then
+	echo "I am If condition"
+fi
+===========
+==============================
+2 Condition under evaluation
+==============================
+if...else...fi statement
+----------------------------
+if [ condition ]
+then
+	echo "I am If condition"
+else
+	echo "I am else condition"
+fi
+
+if [ You get a Tail in the toss ]
+then
+ echo "Go take a tea when you encounter a head"
+else
+ echo "Go take a coffee when you encounter a head"
+fi
+
+if [ You get a Head in the toss ]
+then
+ echo "Go take a coffee when you encounter a head"
+else
+ echo "Go take a tea when you encounter a head"
+fi
+============
+if...elif...else...fi statement
+--------------------------------
+==================================
+3 or n Condition under evaluation
+==================================
+if [ condition ]
+then
+	echo "I am If condition"
+elif [ condition ]
+	echo "I am elif condition"
+else
+	echo "I am else condition"
+fi
+=======================
+Dice = Throw a dice = 1,2,3,4,5,6.
+
+if [ you got a 1 in a dice ]
+then
+	echo "I am If condition"
+elif [ you got a 2 in a dice ]
+	echo "I am elif condition"
+elif [ you got a 3 in a dice ]
+	echo "I am elif condition"
+elif [ you got a 4 in a dice ]
+	echo "I am elif condition"
+elif [ you got a 5 in a dice ]
+	echo "I am elif condition"
+else
+	echo "I am else condition"
+fi
+================
+Case Statement 
+=================
+case word in
+   pattern1)
+      Statement(s) to be executed if pattern1 matches
+      ;;
+   pattern2)
+      Statement(s) to be executed if pattern2 matches
+      ;;
+   pattern3)
+      Statement(s) to be executed if pattern3 matches
+      ;;
+   *)
+     Default condition to be executed
+     ;;
+esac
+
+===========
+
+if [ 1==1 ]
+then
+	echo "I am in If condition"
+elif [ 1==1 ]
+	echo "I am elif condition"
+else
+	echo "I am else condition"
+fi
+
+========================
+#!/bin/sh
+
+FRUIT="kiwi"
+
+case "$FRUIT" in
+   "apple") echo "Apple pie is quite tasty." 
+   ;;
+   "banana") echo "I like banana nut bread." 
+   ;;
+   "kiwi") echo "New Zealand is famous for kiwi." 
+   ;;
+esac
+================================
+#! /bin/bash
+FRUIT="kiwi"
+if [ $FRUIT -eq "apple" ]
+then
+  echo "Apple pie is quite tasty." 
+elif [ $FRUIT -eq "banana" ]
+then
+  echo "I like banana nut bread.."
+elif [ $FRUIT -eq "kiwi" ]
+then
+  echo "New Zealand is famous for kiwi."
+else
+  echo "I like $FRUIT"
+fi
+============================================
+[root@ip-172-31-18-34 shellscripting]# kill -l
+ 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+ 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
+11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX
+[root@ip-172-31-18-34 shellscript

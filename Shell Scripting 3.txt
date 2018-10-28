@@ -250,7 +250,9 @@ By default, every process that you start runs in the foreground. It gets its inp
 
 A background process runs without being connected to your keyboard. If the background process requires any keyboard input, it waits.
 
-The simplest way to start a background process is to add an ampersand (&) at the end of the command.
+The simplest way to start a background process is to add an ampersand (
+
+ at the end of the command.
 
 List of running Processes - ps
 

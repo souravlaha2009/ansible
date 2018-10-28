@@ -1,4 +1,4 @@
-1) To make the Computer ask your name - Command
+To make the Computer ask your name - Command
 echo "What is your name?"
 read PERSON
 echo "Hello, $PERSON"
