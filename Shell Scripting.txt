@@ -33,7 +33,9 @@ VAR=value
 var.sh
 #!/bin/sh
 MY_MESSAGE="Hello World"
+MY_MESSAGE=45
 echo $MY_MESSAGE
+
 
 
 
@@ -90,6 +92,8 @@ do
   echo "Looping ... number $i"
 done
 
+i = 1
+i = "Rahul"
 
 Lab 8: Using Wild Cards with FOr Loop
 =======================================

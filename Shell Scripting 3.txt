@@ -1,0 +1,263 @@
+Regular Expressions with SED
+=============================
+A regular expression is a string that can be used to describe several sequences of characters.
+SED stands for stream editor.
+
+Lab 1: Sed can be invoked by sending data through a pipe to it 
+cat /etc/passwd | sed
+
+a) The cat command dumps the contents of /etc/passwd to sed through the pipe into sed's pattern space. 
+b) The pattern space is the internal work buffer that sed uses for its operations.
+
+Syntax of SED
+================
+/pattern/action
+
+a) pattern is a regular expression, and action is one of the commands given in the following table. 
+b) If pattern is omitted, action is performed for every line.
+
+
+p - Prints the line
+d - Deletes the line
+s/pattern1/pattern2/ - Substitutes the first occurrence of pattern1 with pattern2
+
+Lab 2 : Deleting All Lines with sed
+=====================================
+cat /etc/passwd | sed 'd'
+
+
+Lab 3: Delete only 1st line
+==============================
+cat /etc/passwd | sed '1d' |more
+
+
+Lab 4: Delete 1 through line 5 
+===============================
+cat /etc/passwd | sed '1, 5d' |more
+
+
+'4,10d' - Lines starting from the 4th till the 10th are deleted
+'10,4d' - Only 10th line is deleted, because the sed does not work in reverse direction
+'4,+5d' - This matches line 4 in the file, deletes that line, continues to delete the next five lines, and then ceases its deletion and prints the rest
+'2,5!d' - This deletes everything except starting from 2nd till 5th line
+'1~3d'  - This deletes the first line, steps over the next three lines, and then deletes the fourth line. Sed continues to apply this pattern until the end of the file.
+'2~2d'  - This tells sed to delete the second line, step over the next line, delete the next line, and repeat until the end of the file is reached
+'4,10p' - Lines starting from 4th till 10th are printed
+'4,d'   - This generates the syntax error
+',10d'  - This would also generate syntax error
+
+
+Lab 5: Substitute the first occurrence on a line of the string root with the string amrood
+==========================================
+cat /etc/passwd | sed 's/root/amrood/'
+
+Lab 6: global substitution
+============================
+cat /etc/passwd | sed 's/root/amrood/g'
+
+Lab 7: Replacing with Empty Space
+=====================================
+cat /etc/passwd | sed 's/root//g'
+
+Lab 8: Substitute the string sh with the string quiet only on line 10
+======================================
+cat /etc/passwd | sed '10s/sh/quiet/g'
+
+
+Lab 9 : p option along with the -n option to print all the matching 
+====================================================================
+vi testing
+root:x:0:0:root user:/root:/bin/sh
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+bin:x:2:2:bin:/bin:/bin/sh
+sys:x:3:3:sys:/dev:/bin/sh
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/bin/sh
+man:x:6:12:man:/var/cache/man:/bin/sh
+mail:x:8:8:mail:/var/mail:/bin/sh
+news:x:9:9:news:/var/spool/news:/bin/sh
+backup:x:34:34:backup:/var/backups:/bin/sh
+
+SED Command
+cat testing | sed -n '/root/p'
+
+
+Lab 10: matches all the lines starting with daemon and then deletes them
+===========================================
+cat testing | sed '/^daemon/d'
+
+^ - Matches the beginning of lines
+$ - Matches the end of lines
+. - Matches any single character
+* - Matches zero or more occurrences of the previous character
+[chars] - Matches any one of the characters given in chars, where chars is a sequence of characters. You can use the - character to indicate a range of characters.
+
+
+
+UNIX File System
+=================
+A file system is a logical collection of files on a partition or disk. A partition is a container for information and can span an entire hard drive if desired.
+
+Unix uses a hierarchical file system structure, much like an upside-down tree, with root (/) at the base of the file system and all other directories spreading from there.
+
+/ - This is the root directory which should contain only the directories needed at the top level of the file structure
+
+/bin - This is where the executable files are located. These files are available to all users
+
+/dev - These are device drivers
+
+/etc - Supervisor directory commands, configuration files, disk configuration files, valid user lists, groups, ethernet, hosts, where to send critical messages
+
+/lib - Contains shared library files and sometimes other kernel-related files
+
+/boot - Contains files for booting the system
+
+/home - Contains the home directory for users and other accounts
+
+/mnt  - Used to mount other temporary file systems, such as cdrom and floppy for the CD-ROM drive and floppy diskette drive, respectively
+
+/proc  - Contains all processes marked as a file by process number or other information that is dynamic to the system
+
+/tmp  - Holds temporary files used between system boots
+
+/usr  - Used for miscellaneous purposes, and can be used by many users. Includes administrative commands, shared files, library files, and others
+
+/var  - Typically contains variable-length files such as log and print files and any other type of file that may contain a variable amount of data
+
+/sbin  - Contains binary (executable) files, usually for system administration. For example, fdisk and ifconfig utlities
+
+/kernel - Contains kernel files
+
+Commands for Navigating the File System
+==========================================
+cat filename - Displays a filename
+	
+cd dirname   - Moves you to the identified directory
+
+cp file1 file2 Copies one file/directory to the specified location
+
+file filename - Identifies the file type (binary, text, etc)
+
+find filename dir - Finds a file/directory
+
+head filename - Shows the beginning of a file
+
+less filename - Browses through a file from the end or the beginning
+
+ls dirname - Shows the contents of the directory specified
+
+mkdir dirname - Creates the specified directory
+
+more filename - Browses through a file from the beginning to the end
+
+mv file1 file2 - Moves the location of, or renames a file/directory
+
+pwd - Shows the current directory the user is in
+
+rm filename - Removes a file
+
+rmdir dirname - Removes a directory
+
+tail filename - Shows the end of a file
+
+touch filename - Creates a blank file or modifies an existing file or its attributes
+
+whereis filename - Shows the location of a file
+
+which filename - Shows the location of a file if it is in your PATH
+
+df -k - Manage partition
+du /etc - disk usage command
+
+mount - A file system must be mounted in order to be usable by the system
+mount -t file_system_type device_to_mount directory_to_mount_to
+mount -t iso9660 /dev/cdrom /mnt/cdrom
+
+umount /dev/cdrom
+
+
+Linux System Performance
+=========================
+nice/renice - Runs a program with modified scheduling priority
+
+netstat - Prints network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+
+time - Helps time a simple command or give resource usage
+
+uptime - This is System Load Average
+
+ps - Reports a snapshot of the current processes
+
+vmstat - Reports virtual memory statistics
+
+gprof - Displays call graph profile data
+
+prof - Facilitates Process Profiling
+
+top - Displays system tasks
+
+
+Linux System Logging
+=======================
+1) Many versions of Unix provide a general-purpose logging facility called syslog.
+2) Unix syslog is a host-configurable, uniform system logging facility. 
+3) The system uses a centralized system logging process that runs the program /etc/syslogd or /etc/syslog.
+4) The operation of the system logger is quite straightforward. 
+5) Programs send their log entries to syslogd, which consults the configuration file /etc/syslogd.conf or /etc/syslog and, when a match is found, writes the log message to the desired log file.
+
+
+Linux Signals and Traps
+=========================
+Signals are software interrupts sent to a program to indicate that an important event has occurred.
+The events can vary from user requests to illegal memory access errors.
+
+Common signals you might encounter
+=========================================
+SIGHUP	1	Hang up detected on controlling terminal or death of controlling process
+SIGINT	2	Issued if the user sends an interrupt signal (Ctrl + C)
+SIGQUIT	3	Issued if the user sends a quit signal (Ctrl + D)
+SIGFPE	8	Issued if an illegal mathematical operation is attempted
+SIGKILL	9	If a process gets this signal it must quit immediately and will not perform any clean-up operations
+SIGALRM	14	Alarm clock signal (used for timers)
+SIGTERM	15	Software termination signal (sent by kill by default)
+
+kill -l command and it would display all the supported signals
+
+Trap Signals
+===============
+you may end up leaving a bunch of temporary files that won't get cleaned up.
+syntax −
+$ trap commands signals
+
+There are two common uses for trap in shell scripts −
+a) Clean up temporary files
+	trap "rm $WORKDIR/work1$$ $WORKDIR/dataout$$; exit" 1 2
+b) Ignore signals
+	trap '' 2
+	trap '' 1 2 3 15
+	
+Process
+==========
+A process is an instance of a running program.
+A special environment for that program is created by the system when you execute a program.
+This environment contains everything needed for the system to run the program as if no other program were running on the system.
+
+When you start a process (run a command), there are two ways you can run it −
+Foreground Processes
+Background Processes
+
+By default, every process that you start runs in the foreground. It gets its input from the keyboard and sends its output to the screen.
+
+A background process runs without being connected to your keyboard. If the background process requires any keyboard input, it waits.
+
+The simplest way to start a background process is to add an ampersand (&) at the end of the command.
+
+List of running Processes - ps
+
+Zombie and Orphan Processes
+sometimes the parent process is killed before its child is killed. Thats a Zombie process
+
+Daemon Processes
+A daemon is a process that runs in the background, usually waiting for something to happen that it is capable of working with. 
+For example, a printer daemon waiting for print commands.
+
