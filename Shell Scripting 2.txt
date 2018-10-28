@@ -1,0 +1,718 @@
+A shell script is a computer program designed to be run by the Unix/Linux shell which could be one of the following:
+
+The Bourne Shell - $
+The C Shell - %
+The Korn Shell
+The GNU Bourne-Again Shell
+
+A shell is a command-line interpreter and typical operations performed by shell scripts include file manipulation, program execution, and printing text.
+
+Lab 1: Read the name
+========================== 
+echo "What is your name?"
+read PERSON
+echo "Hello, $PERSON"
+
+
+A Shell provides you with an interface to the Unix system. It gathers input from you and executes programs based on that input. When a program finishes executing, it displays that program's output.
+
+Shell is an environment in which we can run our commands, programs, and shell scripts. There are different flavors of a shell, just as there are different flavors of operating systems. Each flavor of shell has its own set of recognized commands and functions.
+
+Shell Types
+=============
+In Unix, there are two major types of shells −
+1) Bourne shell − If you are using a Bourne-type shell, the $ character is the default prompt.
+2) C shell − If you are using a C-type shell, the % character is the default prompt.
+The Bourne Shell has the following subcategories −
+Bourne shell (sh)
+Korn shell (ksh)
+Bourne Again shell (bash)
+POSIX shell (sh)
+
+The different C-type shells follow −
+C shell (csh)
+TENEX/TOPS C shell (tcsh)
+
+Lab 2: Array Values
+=====================
+#!/bin/sh
+
+NAME[0]="Rahul"
+NAME[1]="Sourav"
+NAME[2]="Rahul"
+NAME[3]="Ayan"
+NAME[4]="Daisy"
+echo "First Index: ${NAME[0]}"
+echo "Second Index: ${NAME[1]}"
+
+Lab 3: Arithmatic Operator
+=============================
+#!/bin/sh
+
+val=`expr 2 + 2`
+echo "Total value : $val"
+
+
+Lab 4: 
+==========
+#!/bin/sh
+
+a=10
+b=20
+
+val=`expr $a + $b`
+echo "a + b : $val"
+
+val=`expr $a - $b`
+echo "a - b : $val"
+
+val=`expr $a \* $b`
+echo "a * b : $val"
+
+val=`expr $b / $a`
+echo "b / a : $val"
+
+val=`expr $b % $a`
+echo "b % a : $val"
+
+if [ $a == $b ]
+then
+   echo "a is equal to b"
+fi
+
+if [ $a != $b ]
+then
+   echo "a is not equal to b"
+fi
+
+[ $a != $b ]
+
+Lab 5: Reelational Operators 
+=============================
+Rule
+All the conditional expressions are placed inside the square braces with spaces around them.
+
+#!/bin/sh
+
+a=10
+b=20
+
+if [ $a -eq $b ]
+then
+   echo "$a -eq $b : a is equal to b"
+else
+   echo "$a -eq $b: a is not equal to b"
+fi
+
+if [ $a -ne $b ]
+then
+   echo "$a -ne $b: a is not equal to b"
+else
+   echo "$a -ne $b : a is equal to b"
+fi
+
+if [ $a -gt $b ]
+then
+   echo "$a -gt $b: a is greater than b"
+else
+   echo "$a -gt $b: a is not greater than b"
+fi
+
+if [ $a -lt $b ]
+then
+   echo "$a -lt $b: a is less than b"
+else
+   echo "$a -lt $b: a is not less than b"
+fi
+
+if [ $a -ge $b ]
+then
+   echo "$a -ge $b: a is greater or  equal to b"
+else
+   echo "$a -ge $b: a is not greater or equal to b"
+fi
+
+if [ $a -le $b ]
+then
+   echo "$a -le $b: a is less or  equal to b"
+else
+   echo "$a -le $b: a is not less or equal to b"
+fi
+
+
+Lab 6: Boolean Operators
+========================
+#!/bin/sh
+
+a=10
+b=20
+
+if [ $a != $b ]
+then
+   echo "$a != $b : a is not equal to b"
+else
+   echo "$a != $b: a is equal to b"
+fi
+
+if [ $a -lt 100 -a $b -gt 15 ]
+then
+   echo "$a -lt 100 -a $b -gt 15 : returns true"
+else
+   echo "$a -lt 100 -a $b -gt 15 : returns false"
+fi
+
+if [ $a -lt 100 -o $b -gt 100 ]
+then
+   echo "$a -lt 100 -o $b -gt 100 : returns true"
+else
+   echo "$a -lt 100 -o $b -gt 100 : returns false"
+fi
+
+if [ $a -lt 5 -o $b -gt 100 ]
+then
+   echo "$a -lt 5 -o $b -gt 100 : returns true"
+else
+   echo "$a -lt 5 -o $b -gt 100 : returns false"
+fi
+
+
+Lab 7 : STring Operators
+========================
+#!/bin/sh
+
+a="abc"
+b="efg"
+
+if [ $a = $b ]
+then
+   echo "$a = $b : a is equal to b"
+else
+   echo "$a = $b: a is not equal to b"
+fi
+
+if [ $a != $b ]
+then
+   echo "$a != $b : a is not equal to b"
+else
+   echo "$a != $b: a is equal to b"
+fi
+
+if [ -z $a ]
+then
+   echo "-z $a : string length is zero"
+else
+   echo "-z $a : string length is not zero"
+fi
+
+if [ -n $a ]
+then
+   echo "-n $a : string length is not zero"
+else
+   echo "-n $a : string length is zero"
+fi
+
+if [ $a ]
+then
+   echo "$a : string is not empty"
+else
+   echo "$a : string is empty"
+fi
+
+
+Lab 8: File Test
+================
+#!/bin/sh
+
+file="/root/test.sh"
+
+if [ -r $file ]
+then
+   echo "File has read access"
+els e
+   echo "File does not have read access"
+fi
+
+if [ -w $file ]
+then
+   echo "File has write permission"
+else
+   echo "File does not have write permission"
+fi
+
+if [ -x $file ]
+then
+   echo "File has execute permission"
+else
+   echo "File does not have execute permission"
+fi
+
+if [ -f $file ]
+then
+   echo "File is an ordinary file"
+else
+   echo "This is sepcial file"
+fi
+
+if [ -d $file ]
+then
+   echo "File is a directory"
+else
+   echo "This is not a directory"
+fi
+
+if [ -s $file ]
+then
+   echo "File size is zero"
+else
+   echo "File size is not zero"
+fi
+
+if [ -e $file ]
+then
+   echo "File exists"
+else
+   echo "File does not exist"
+fi
+
+
+Lab 9: If else
+==============
+Unix Shell supports following forms of if…else statement −
+
+if...fi statement
+if...else...fi statement
+if...elif...else...fi statement
+
+
+Case syntax:
+------------
+case word in
+   pattern1)
+      Statement(s) to be executed if pattern1 matches
+      ;;
+   pattern2)
+      Statement(s) to be executed if pattern2 matches
+      ;;
+   pattern3)
+      Statement(s) to be executed if pattern3 matches
+      ;;
+   *)
+     Default condition to be executed
+     ;;
+esac
+
+Case Ex 1:
+#!/bin/sh
+
+FRUIT="kiwi"
+
+case "$FRUIT" in
+   "apple") echo "Apple pie is quite tasty." 
+   ;;
+   "banana") echo "I like banana nut bread." 
+   ;;
+   "kiwi") echo "New Zealand is famous for kiwi." 
+   ;;
+esac
+
+
+Case Ex 2:
+#!/bin/sh
+
+option="${1}" 
+case ${option} in 
+   -f) FILE="${2}" 
+      echo "File name is $FILE"
+      ;; 
+   -d) DIR="${2}" 
+      echo "Dir name is $DIR"
+      ;; 
+   *)  
+      echo "`basename ${0}`:usage: [-f file] | [-d directory]" 
+      exit 1 # Command to come out of the program with status 1
+      ;; 
+esac 
+
+
+Lab 10:
+=============
+Nesting of while loops sysntax
+while command1 ; # this is loop1, the outer loop
+do
+   Statement(s) to be executed if command1 is true
+
+   while command2 ; # this is loop2, the inner loop
+   do
+      Statement(s) to be executed if command2 is true
+   done
+
+   Statement(s) to be executed if command1 is true
+done
+
+EX:
+
+#!/bin/sh
+
+a=0
+while [ "$a" -lt 10 ]    # this is loop1
+do
+   b="$a"
+   while [ "$b" -ge 0 ]  # this is loop2
+   do
+      echo -n "$b "
+      b=`expr $b - 1`
+   done
+   echo
+   a=`expr $a + 1`
+done
+
+Lab 11: Break
+===================
+
+#!/bin/sh
+
+a=0
+
+while [ $a -lt 10 ]
+do
+   echo $a
+   if [ $a -eq 5 ]
+   then
+      break
+   fi
+   a=`expr $a + 1`
+done
+
+
+
+Lab 12: break n
+================
+#!/bin/sh
+
+for var1 in 1 2 3
+do
+   for var2 in 0 5
+   do
+      if [ $var1 -eq 2 -a $var2 -eq 0 ]
+      then
+         break 2
+      else
+         echo "$var1 $var2"
+      fi
+   done
+done
+
+
+Lab 13: Continue
+================
+#!/bin/sh
+
+NUMS="1 2 3 4 5 6 7"
+
+for NUM in $NUMS
+do
+   Q=`expr $NUM % 2`
+   if [ $Q -eq 0 ]
+   then
+      echo "Number is an even number!!"
+      continue
+   fi
+   echo "Found odd number"
+done
+
+
+Lab 14: Substitution
+=====================
+#!/bin/sh
+
+a=10
+echo -e "Value of a is $a \n"
+
+
+Lab 15 : Comand Substitution
+============================
+#!/bin/sh
+
+DATE=`date`
+echo "Date is $DATE"
+
+USERS=`who | wc -l`
+echo "Logged in user are $USERS"
+
+UP=`date ; uptime`
+echo "Uptime is $UP"
+
+Lab 16: variable Substitution
+===============================
+#!/bin/sh
+
+echo ${var:-"Variable is not set"}
+echo "1 - Value of var is ${var}"
+
+echo ${var:="Variable is not set"}
+echo "2 - Value of var is ${var}"
+
+unset var
+echo ${var:+"This is default value"}
+echo "3 - Value of var is $var"
+
+var="Prefix"
+echo ${var:+"This is default value"}
+echo "4 - Value of var is $var"
+
+echo ${var:?"Print this message"}
+echo "5 - Value of var is ${var}"
+
+
+Lab 17: Metacharacters
+=========================
+* ? [ ] ' " \ $ ; & ( ) | ^ < > new-line space tab
+
+These characters have special meaning while using them in any Shell Script and causes termination of a word unless quoted.
+
+EX:
+#!/bin/sh
+echo Hello; Word
+
+EX:
+#!/bin/sh
+echo Hello\; Word
+
+EX:
+#!/bin/sh
+echo "I have \$1200"
+
+
+
+Lab 18: Output Reditection
+=============================
+who > users
+
+Lab 19: Input Redirection
+===========================
+wc -l < users
+
+Diff
+wc -l users
+
+
+Lab 20: Here Document
+======================
+The general form for a here document is −
+
+command << delimiter
+document
+delimiter
+
+
+Ex1:
+-----
+$wc -l << EOF
+   This is a simple lookup program 
+	for good (and bad) restaurants
+	in Cape Town.
+EOF
+3
+
+Ex2:
+-----
+#!/bin/sh
+
+cat << EOF
+This is a simple lookup program 
+for good (and bad) restaurants
+in Cape Town.
+EOF
+
+
+Lab 21: Discard the O/P
+========================
+$command > /dev/null
+
+The file /dev/null is a special file that automatically discards all its input.
+
+To discard both output of a command and its error output, use standard redirection to redirect STDERR to STDOUT −
+
+$ command > /dev/null 2>&1
+
+Lab 22: Functions
+======================
+function_name () { 
+   list of commands
+}
+
+EX1:
+--------
+#!/bin/sh
+
+# Define your function here
+Hello () {
+   echo "Hello World"
+}
+
+EX2: Parameters to a function
+------------------------------
+#!/bin/sh
+
+# Define your function here
+Hello () {
+   echo "Hello World $1 $2"
+}
+
+
+EX3: Returning Values from a function
+--------------------------------------
+#!/bin/sh
+
+# Define your function here
+Hello () {
+   echo "Hello World $1 $2"
+   return 10
+}
+
+# Invoke your function
+Hello Zara Ali
+
+# Capture value returnd by last command
+ret=$?
+
+echo "Return value is $ret"
+
+Ex 4: Nested Functions
+----------------------
+#!/bin/sh
+
+# Calling one function from another
+number_one () {
+   echo "This is the first function speaking..."
+   number_two
+}
+
+number_two () {
+   echo "This is now the second function speaking..."
+}
+
+
+Lab 23: System Performance
+----------------------------
+nice/renice - Runs a program with modified scheduling priority
+netstat - Prints network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+time - Helps time a simple command or give resource usage
+uptime - This is System Load Average
+ps - Reports a snapshot of the current processes
+vmstat - Reports virtual memory statistics
+gprof - Displays call graph profile data
+prof - Facilitates Process Profiling
+top - Displays system tasks
+
+
+User => Terminal => Shell => OS => Kernel => Hardware.
+
+
+Lab 24: FOr Loop
+-------------------
+Syntax 1:
+=============
+for { variable name } in { list }
+            do
+                     execute one for each item in the list until the list is
+                     not finished (And repeat all statement between do and done)
+            done
+Ex1:
+-----
+$ cat > testfor
+for i in 1 2 3 4 5
+do
+echo "Welcome $i times"
+done
+
+
+Syntax 2:
+for (( expr1; expr2; expr3 ))
+         do
+               .....
+			   ...
+               repeat all statements between do and 
+               done until expr2 is TRUE
+         Done
+
+EX:
+$ cat > for2
+for ((  i = 0 ;  i <= 5;  i++  ))
+do
+  echo "Welcome $i times"
+done		 
+
+Ex3: Nested For Loop
+---------------------
+vi nestedfor.sh
+for (( i = 1; i <= 5; i++ ))      ### Outer for loop ###
+do
+
+    for (( j = 1 ; j <= 5; j++ )) ### Inner for loop ###
+    do
+          echo -n "$i "
+    done
+
+  echo "" #### print the new line ###
+
+done
+
+
+
+Lab 25: If else fi
+
+if condition
+           then
+                       condition is zero (true - 0)
+                       execute all commands up to else statement
+
+           else
+                       if condition is not true then
+                       execute all commands up to fi
+           fi
+		   
+		   
+		   
+Lab 26: Nested if
+=====================
+Syntax:
+
+	if condition
+	then
+		if condition
+		then
+			.....
+			..
+			do this
+		else
+			....
+			..
+			do this
+		fi
+	else
+		...
+		.....
+		do this
+	fi
+	
+$ vi nestedif.sh
+osch=0
+
+echo "1. Unix (Sun Os)"
+echo "2. Linux (Red Hat)"
+echo -n "Select your os choice [1 or 2]? "
+read osch
+
+if [ $osch -eq 1 ] ; then
+
+     echo "You Pick up Unix (Sun Os)"
+
+else #### nested if i.e. if within if ######
+            
+       if [ $osch -eq 2 ] ; then
+             echo "You Pick up Linux (Red Hat)"
+       else
+             echo "What you don't like Unix/Linux OS."
+       fi
+fi

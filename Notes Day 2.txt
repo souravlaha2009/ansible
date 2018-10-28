@@ -1,0 +1,43 @@
+1) To make the Computer ask your name - Command
+echo "What is your name?"
+read PERSON
+echo "Hello, $PERSON"
+
+echo - Used to Display the String.
+Read - Used to read the input from STDIN.
+$ - Used to display the contents of any Variable or Array
+
+
+Default STDIN  - Terminal
+Default STDOUT - Terminal
+
+STDIN  - File
+STDOUT - File
+
+Redirection Operator - >
+dd    - delete 1 line
+10 dd - delete 10 line
+
+-a = and
+-o = or
+-z = zero Check
+-n = null check
+-eq = equals
+-lt = less than
+-gt = greater than
+-gele = 
+`expr` = AM Op
+
+rwx = user
+rwx = group
+rwx = other
+-r  = read permission
+-w  = write permission
+-x  = execute permission
+-f  = Type of the File
+-d  = checks if it is a directory
+-s  = Check if file size is empty or not.
+-e  = File exists or not
+
+
+
